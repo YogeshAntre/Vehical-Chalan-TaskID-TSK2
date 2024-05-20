@@ -1,0 +1,4 @@
+django
+mysqlclient
+bootstrap4
+crispy

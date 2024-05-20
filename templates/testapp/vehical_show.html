@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Vehicle List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Registration Number</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicle in form %}
+            <tr>
+                <td>{{ vehicle.registration_number }}</td>
+                <td>{{ vehicle.make }}</td>
+                <td>{{ vehicle.model }}</td>
+                <td>{{ vehicle.color }}</td>
+                <td>{{ vehicle.year }}</td>
+                <td>
+                    <a href="{% url 'vehicle_edit' vehicle.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'vehicle_create' %}" class="btn btn-success mt-3">Add New Vehicle</a>
+    <a href="{% url 'chalan_create' %}" class="btn btn-info mt-3">Add New Chalan</a>
+</div>
+{% endblock %}

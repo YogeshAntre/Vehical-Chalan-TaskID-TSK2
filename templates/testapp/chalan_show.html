@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Chalan List</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Vehicle</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chalan in form %}
+            <tr>
+                <td>{{ chalan.id }}</td>
+                <td>{{ chalan.vehicle.registration_number }}</td>
+                <td>{{ chalan.amount }}</td>
+                <td>{{ chalan.date }}</td>
+                <td>{{ chalan.description }}</td>
+                <td>
+                    <a href="{% url 'chalan_edit' chalan.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'chalan_create' %}" class="btn btn-success mt-3">Add New Chalan</a>
+</div>
+{% endblock %}
